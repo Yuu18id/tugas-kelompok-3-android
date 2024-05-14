@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
-    android:layout_height="300dp"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="64dp"
+    android:padding="16dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hapus Note"/>
+        android:text="Hapus Note" />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Apakah kamu yakin ingin menghapus note ini?"/>
+        android:text="Apakah kamu yakin ingin menghapus note ini?" />
+
     <Button
         android:id="@+id/cancelDeleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BATAL"/>
+        android:text="BATAL" />
+
     <Button
         android:id="@+id/confirmDeleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HAPUS"/>
+        android:text="HAPUS" />
+
 </LinearLayout>
