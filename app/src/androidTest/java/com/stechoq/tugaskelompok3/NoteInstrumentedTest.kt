@@ -33,8 +33,6 @@ class NoteInstrumentedTest {
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, NoteDatabase::class.java).build()
-
-        // Insert a sample note before running the tests
         runBlocking {
             db.daoNote().insert(Note(
                 title = "title",
@@ -42,7 +40,6 @@ class NoteInstrumentedTest {
             ))
         }
         fun setUp() {
-            // Menonaktifkan animasi selama pengujian
             val disableAnimation = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
             if (disableAnimation) {
                 InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(
@@ -65,25 +62,12 @@ class NoteInstrumentedTest {
 
     @Test
     fun deleteNote() {
-        // Tunggu hingga teks "title" muncul dalam TextView
         onView(withText("title")).check(matches(isDisplayed()))
-
-        // Klik pada TextView dengan teks "title"
         onView(withText("title")).perform(click())
-
-        // Pastikan bahwa tombol hapus muncul setelah TextView di klik
         onView(withId(R.id.deleteNoteButton)).check(matches(isDisplayed()))
-
-        // Klik pada tombol hapus
         onView(withId(R.id.deleteNoteButton)).perform(click())
-
-        // Pastikan dialog konfirmasi muncul
         onView(withText("Apakah kamu yakin ingin menghapus note ini?")).check(matches(isDisplayed()))
-
-        // Klik pada tombol "HAPUS" di dialog konfirmasi
         onView(withId(R.id.confirmDeleteButton)).perform(click())
-
-        // Tunggu hingga TextView dengan teks "title" tidak lagi muncul
         onView(withText("title")).check(matches(not(isDisplayed())))
     }
 }
